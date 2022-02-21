@@ -1,0 +1,364 @@
+* {
+	box-sizing: border-box;
+	position: relative;
+	font-family: Arial;
+}
+
+html, body {
+	margin: 0;
+	border: none;
+}
+
+.ofh {
+	overflow: hidden;
+}
+
+#throwaway {
+	top: -9999999px;
+	left: -9999999px;
+	height: 0;
+	width: 0;
+}
+
+.row {
+	margin: 0 !important;
+}
+
+.divider {
+	margin: 40px 0;
+}
+
+.spacer {
+	height: 1px;
+	overflow: hidden;
+	margin-bottom: 40px;
+}
+
+button {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/*----------------------------------------------*/
+
+#valuesTable {
+	position: absolute;
+	bottom: 100%;
+}
+
+/*----------------------------------------------*/
+
+header {
+	height: 10vh;
+	width: 100vw;
+	z-index: 11;
+}
+
+header h5 {
+	height: 100%;
+	position: absolute;
+	line-height: 2;
+	display: inline-block;
+	margin: 0;
+	font-weight: 400;
+}
+
+header #p1 {
+	float: left;
+	color: rgb(255,0,0);
+	left: 5px;
+}
+
+header #nextTurn {
+	position: absolute;
+	height: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+}
+
+header #nextTurn:after {
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+}
+
+header #p2 {
+	float: right;
+	color: rgb(0,150,0);
+	right: 5px;
+	margin: 0;
+}
+
+/*----------------------------------------------*/
+
+main {
+	height: 90vh;
+	width: 100vw;
+	padding: 0;
+	background-color: #f2f2f2;
+}
+
+#fieldSize {
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+#fieldSize>div {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.bigField.container {
+	height: 100%;
+	width: 100%;
+	transition: all .75s;
+	top: 0;
+	left: 0;
+}
+
+.bigField .row {
+	margin: 0;
+}
+
+#fieldSize>div>.bigField.r1c1 {
+	transform: scale(3.2) translate(0, 0);
+}
+
+#fieldSize>div>.bigField.r1c2 {
+	transform: scale(3.2) translate(0, 0);
+}
+
+#fieldSize>div>.bigField.r1c3 {
+	transform: scale(3.2) translate(0, 0);
+}
+
+#fieldSize>div>.bigField.r2c1 {
+	transform: scale(3.2) translate(0, 0);
+}
+
+#fieldSize>div>.bigField.r2c2 {
+	transform: scale(3.2) translate(0, 0);
+}
+
+#fieldSize>div>.bigField.r2c3 {
+	transform: scale(3.2) translate(0, 0);
+}
+
+#fieldSize>div>.bigField.r3c1 {
+	transform: scale(3.2) translate(0, 0);
+}
+
+#fieldSize>div>.bigField.r3c2 {
+	transform: scale(3.2) translate(0, 0);
+}
+
+#fieldSize>div>.bigField.r3c3 {
+	transform: scale(3.2) translate(0, 0);
+}
+
+.row {
+	height: 33.3%;
+	width: 100%;
+}
+
+.col {
+	height: 100%;
+	width: 33.3%;
+	float: left;
+	padding: 2.5%;
+}
+
+.bigField.col {
+	z-index: 10;
+}
+
+.bigField.col div{
+	z-index: -1;
+}
+
+
+
+.bigField>.smallField {
+	height: 100%;
+	width: 100%;
+	opacity: .3;
+	transition: all .5s;
+	cursor: pointer;
+}
+
+.bigField>.smallField:hover, .bigField>.smallField:active {
+	opacity: .9;
+	box-shadow: 0;
+}
+
+.r1, .r2 {
+	border-bottom: 2px solid black;
+}
+
+.c1, .c2 {
+	border-right: 2px solid black;
+}
+
+.smallField .r1, .smallField .r2 {
+	border-bottom: 2px solid black;
+}
+
+.smallField .c1, .smallField .c2 {
+	border-right: 2px solid black;
+}
+
+.X:after, .Xspan {
+	color: rgb(250,0,0);
+	padding: 0;
+	margin: 0;
+}
+
+.O:after, .Ospan {
+	color: rgb(0,150,0);
+	padding: 0;
+	margin: 0;
+}
+
+.O:after, .X:after {
+	line-height: 1;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.O:after {
+	content: "O";
+}
+
+.X:after {
+	content: "X";
+}
+
+.hideLoadingScreen {
+	display: none;
+}
+
+#loadingScreen {
+	z-index: 10;
+	position: fixed;
+	background: #fff;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#loadingScreen h4 {
+	display: inline-block;
+	text-align: center;
+}
+
+#loadingScreen>div {
+	display: inline-block;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  margin-top: 60px;
+  left: calc(50% - 30px);
+  animation: rotate 1.4s infinite ease-in-out, background 1.4s infinite ease-in-out alternate;
+}
+
+@keyframes rotate {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+  }
+}
+@keyframes background {
+  0% {
+  background-color: rgb(250,0,0);
+  }
+  50% {
+    background-color: rgb(0,150,0);
+  }
+  100% {
+    background-color: rgb(0,0,200);;
+  }
+}
+
+.smallField.col {
+	line-height: 1;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	vertical-align: center;
+}
+
+.nextBF {
+    animation-name: nextBFAnimation;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+
+   -webkit-transform: translateZ(0) translate3d(0, 0, 0);
+   -moz-transform: translateZ(0) translate3d(0, 0, 0);
+   -ms-transform: translateZ(0) translate3d(0, 0, 0);
+   -o-transform: translateZ(0);
+   transform: translateZ(0) translate3d(0, 0, 0);
+}
+
+
+@keyframes nextBFAnimation {
+    0%    {background-color: #fff;}
+    50%   {background-color: #ddd;}
+    100%  {background-color: #fff;}
+}
+
+.redBox {
+	box-shadow: inset 10000px 10000px 0 rgba(255, 0, 0, .2)
+}
+
+.blueBox {
+	box-shadow: inset 10000px 10000px 0 rgba(0, 150, 0, 0.15)
+}
+
+.aroundField {
+	z-index: 2;
+}
+
+#leftOfField {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	right: 100%;
+	bottom: 0;
+}
+
+#topOfField {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	bottom: 100%;
+}
+
+#rightOfField {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	left: 100%;
+	bottom: 0;
+}
+
+#bottomOfField {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 100%;
+}
